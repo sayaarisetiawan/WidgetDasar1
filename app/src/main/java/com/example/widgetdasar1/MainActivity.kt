@@ -40,6 +40,18 @@ class MainActivity : AppCompatActivity() {
                     }
 
                 }
+                R.id.cb_traveling -> {
+                    if (checked) {
+                        Toast.makeText(applicationContext,
+                            "${cb_cooking.text} terpilih",
+                            Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(applicationContext,
+                            "${cb_cooking.text} tidak terpilih",
+                            Toast.LENGTH_SHORT).show()
+                    }
+
+                }
             }
         }
     }
