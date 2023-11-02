@@ -16,8 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
         android:id="@+id/etNama"
+        android:ems="10"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -25,22 +26,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="287dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="31dp"
-            android:layout_marginBottom="8dp"
-            android:hint="hint"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -91,31 +77,33 @@
         android:id="@+id/cb_coding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="67dp"
-        android:text="Coding"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:onClick="onCbClicked"
-        app:layout_constraintTop_toBottomOf="@+id/etNama"
-        tools:layout_editor_absoluteX="71dp"
-        tools:ignore="MissingConstraints" />
+        android:text="Coding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cb_traveling" />
 
     <CheckBox
         android:id="@+id/cb_traveling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Travelling"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:onClick="onCbClicked"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="181dp"
-        tools:ignore="MissingConstraints" />
+        android:text="Travelling"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView3" />
 
     <CheckBox
         android:id="@+id/cb_cooking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cooking"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:onClick="onCbClicked"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="233dp"
-        tools:ignore="MissingConstraints" />
+        android:text="Cooking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cb_coding" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

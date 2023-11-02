@@ -6,82 +6,62 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.Toast
+import com.example.widgetdasar1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var latihan: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        latihan = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(latihan.root)
+
+        val radioPria = latihan.rbPria
+        val radioWanita = latihan.rbWanita
+
+        radioPria.setOnClickListener { onRbClicked(radioPria) }
+        radioWanita.setOnClickListener { onRbClicked(radioWanita) }
     }
 
+    private fun onRbClicked(radioButton: RadioButton) {
+        if (radioButton.isChecked) {
+            val nama = latihan.etNama.text.toString()
+            val jenisKelamin = if (radioButton == latihan.rbPria) "Pria" else "Wanita"
+
+            val message = "Anda Bernama $nama seorang $jenisKelamin"
+            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+        }
+    }
     fun onCbClicked(view: View) {
         if (view is CheckBox) {
             val checked: Boolean = view.isChecked
+            val hobbies = mutableListOf<String>()
+
+            if (latihan.cbCoding.isChecked) {
+                hobbies.add(latihan.cbCoding.text.toString())
+            }
+
+            if (latihan.cbTraveling.isChecked) {
+                hobbies.add(latihan.cbTraveling.text.toString())
+            }
+
+            if (latihan.cbCooking.isChecked) {
+                hobbies.add(latihan.cbCooking.text.toString())
+            }
+
             when (view.id) {
-                R.id.cb_coding -> {
+                R.id.cb_coding, R.id.cb_traveling, R.id.cb_cooking -> {
                     if (checked) {
-                        Toast.makeText(applicationContext,
-                            "${cb_coding.text} terpilih",
-                            Toast.LENGTH_SHORT).show()
+                        val nama = latihan.etNama.text.toString()
+                        val hobbiesText = if (hobbies.isNotEmpty()) hobbies.joinToString(", ") else "tidak memiliki hobi"
+                        val message = "$nama memiliki hobi: $hobbiesText"
+                        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(applicationContext,
-                            "${cb_coding.text} tidak terpilih",
-                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Anda batal memilih ${view.text}", Toast.LENGTH_SHORT).show()
                     }
-                }
-                R.id.cb_traveling -> {
-                    if (checked) {
-                        Toast.makeText(applicationContext,
-                            "${cb_traveling.text} terpilih",
-                            Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(applicationContext,
-                            "${cb_traveling.text} tidak terpilih",
-                            Toast.LENGTH_SHORT).show()
-                    }
-
-                }
-                R.id.cb_traveling -> {
-                    if (checked) {
-                        Toast.makeText(applicationContext,
-                            "${cb_cooking.text} terpilih",
-                            Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(applicationContext,
-                            "${cb_cooking.text} tidak terpilih",
-                            Toast.LENGTH_SHORT).show()
-                    }
-
                 }
             }
         }
     }
 
-
-    fun onRbClicked(view: View) {
-        if (view is RadioButton) {
-
-            val checked = view.isChecked
-
-            when (view.id) {
-                R.id.rb_pria -> {
-                    if (checked) {
-                        Toast.makeText(
-                            applicationContext,
-                            "Diklik: ${view.text}",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-                R.id.rb_wanita -> {
-                    if (checked) {
-                        Toast.makeText(
-                            applicationContext,
-                            "Diklik: ${view.text}",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
-        }
-    }
 }
